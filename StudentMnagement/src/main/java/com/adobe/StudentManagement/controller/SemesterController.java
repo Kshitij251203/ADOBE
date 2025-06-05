@@ -79,12 +79,5 @@ public class SemesterController {
         return ResponseEntity.ok(semesterRepository.save(semester));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSemester(@PathVariable String id) {
-        if (!semesterRepository.existsById(id)) {
-            return ResponseEntity.notFound().build();
-        }
-        semesterRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
+    
 }
