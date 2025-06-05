@@ -56,13 +56,5 @@ public class StudentController {
                 }).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Delete by id
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStudent(@PathVariable String id) {
-        return studentRepository.findById(id)
-                .map(student -> {
-                    studentRepository.delete(student);
-                    return ResponseEntity.noContent().<Void>build();
-                }).orElseGet(() -> ResponseEntity.notFound().build());
-    }
+    
 }
