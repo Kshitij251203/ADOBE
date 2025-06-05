@@ -46,11 +46,6 @@ def student_detail(request, student_id):
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=400)
 
-    elif request.method == "DELETE":
-        result = Student.delete(student_id)
-        if result.deleted_count > 0:
-            return JsonResponse({"message": "Student deleted"})
-        return JsonResponse({"error": "Student not found"}, status=404)
 
 @csrf_exempt
 def create_subject(request):
@@ -188,13 +183,6 @@ def marks_detail(request, student_id):
                 return JsonResponse({'error': 'No marks found for this student'}, status=404)
         except Exception:
             return JsonResponse({'error': 'Invalid student ID'}, status=400)
-
-    elif request.method == 'PUT':
-        return JsonResponse({'error': 'PUT not supported on this endpoint'}, status=405)
-
-    elif request.method == 'DELETE':
-        return JsonResponse({'error': 'DELETE not supported on this endpoint'}, status=405)
-
     else:
         return HttpResponseNotAllowed(['GET'])
 
