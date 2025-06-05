@@ -46,12 +46,5 @@ public class SubjectController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSubject(@PathVariable String id) {
-        if (subjectRepository.existsById(id)) {
-            subjectRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
-    }
+    
 }
